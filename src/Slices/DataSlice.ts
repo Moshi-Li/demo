@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import Axios from "axios";
 import { RootStoreI } from "../Store";
-import { rawData as Data } from "../MockData";
+
+const API_URL = `http://127.0.0.1:5000`;
 
 export interface PersonalInformationI {
   [key: string | number]: {
@@ -68,11 +70,14 @@ export const fetchData = createAsyncThunk<
   string,
   { state: RootStoreI }
 >("dataSlice/fetchData", async (text, thunkAPI) => {
-  const res: RawDataI = await new Promise((resolve) =>
-    setTimeout(() => resolve(JSON.parse(JSON.stringify(Data))), 1000)
-  );
-
-  return res;
+  try {
+    const { data } = await await Axios.post(`${API_URL}/test`, {
+      text,
+    });
+    return data as RawDataI;
+  } catch (e) {
+    throw e;
+  }
 });
 
 export const dataSlice = createSlice({

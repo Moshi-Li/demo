@@ -8,7 +8,7 @@ import ReactiveGraph from "./Components/ReactiveGraph";
 import RawData from "./Components/RawData";
 import Filter from "./Components/Filter";
 import StoryInput from "./Components/StoryInput";
-import ClickOption from "./Components/ClickOption";
+
 import {
   ReportSectionLabel,
   ReportDivider,

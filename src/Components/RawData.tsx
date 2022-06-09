@@ -1,11 +1,13 @@
 import React from "react";
 import ReactJson from "react-json-view";
-import { rawData } from "../MockData";
+import { useSelector } from "react-redux";
+import { RootStoreI } from "../Store";
 
 const RawData = () => {
+  const data = useSelector((store: RootStoreI) => store.dataReducer);
   return (
     <ReactJson
-      src={rawData}
+      src={data}
       theme="monokai"
       groupArraysAfterLength={5}
       collapsed
